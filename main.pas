@@ -14,6 +14,7 @@ implementation
 
 function NtResumeProcess(ProcessHandle: THandle): ULONG; stdcall; external 'ntdll.dll';
 function NtSuspendProcess(ProcessHandle: THandle): ULONG; stdcall; external 'ntdll.dll';
+function NtClose(ProcessHandle: THandle): ULONG; stdcall; external 'ntdll.dll';
 function NtCreateSection(
     var SectionHandle: THandle;
     DesiredAccess: ACCESS_MASK;
@@ -71,6 +72,7 @@ begin
   ViewSize := 0;
   NtMapViewOfSection(hSection, hProcess, mbi.AllocationBase, 0, mbi.RegionSize, SectionSize, ViewSize, 2, 0, PAGE_EXECUTE_READWRITE);
   WriteProcessMemory(hProcess, mbi.AllocationBase, Buffer, mbi.RegionSize, PSIZE_T(nil)^);
+  NtClose(hSection);
   NtResumeProcess(hProcess);
   VirtualFree(Buffer, 0, MEM_RELEASE);
 end;
