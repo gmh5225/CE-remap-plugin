@@ -1,7 +1,7 @@
 # remap-plugin
 Remap Plugin for Cheat Engine
 
-Rema page of disassembler address.
+Remap page of disassembler address.
 
 # version
 Tested on Cheat Engine 7.4
