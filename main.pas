@@ -14,7 +14,7 @@ implementation
 
 function NtResumeProcess(ProcessHandle: THandle): ULONG; stdcall; external 'ntdll.dll';
 function NtSuspendProcess(ProcessHandle: THandle): ULONG; stdcall; external 'ntdll.dll';
-function NtClose(ProcessHandle: THandle): ULONG; stdcall; external 'ntdll.dll';
+function NtClose(Handle: THandle): ULONG; stdcall; external 'ntdll.dll';
 function NtCreateSection(
     var SectionHandle: THandle;
     DesiredAccess: ACCESS_MASK;
